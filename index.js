@@ -1,0 +1,1 @@
+alert("Ceci est un debut de site internet !");
