@@ -1,4 +1,5 @@
 function startSurvey() {
+
   var surveyQuestions = [
     "What is your age?",
     "Where are you from?",
@@ -9,24 +10,48 @@ function startSurvey() {
 
   var surveyAnswers = [];
 
+
   function promptQuestion(index) {
     if (index < surveyQuestions.length) {
       var question = surveyQuestions[index];
       var answer = prompt(question);
+
+      
       surveyAnswers.push(answer);
+
+    
       promptQuestion(index + 1);
     } else {
-      displaySurveyResults();
+   
+      promptEmail();
     }
   }
 
-  function displaySurveyResults() {
-    console.log("Survey Results:");
-    for (var i = 0; i < surveyQuestions.length; i++) {
-      console.log(surveyQuestions[i] + " - " + surveyAnswers[i]);
+ 
+  function promptEmail() {
+    var email = prompt("Please enter your email:");
+
+    
+    if (validateEmail(email)) {
+      
+      console.log("Thank you for completing the survey. Your email " + email + " has been recorded.");
+    } else {
+     
+      console.log("Invalid email format. Please try again.");
+      promptEmail();
     }
   }
+
+  
+  function validateEmail(email) {
+    var regex = /\S+@\S+\.\S+/;
+    return regex.test(email);
+  }
+
+  
   promptQuestion(0);
 }
+
+
 startSurvey();
 
