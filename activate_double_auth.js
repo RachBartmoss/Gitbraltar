@@ -23,7 +23,7 @@ function validateToken(user, enteredToken, storedToken) {
   return enteredToken === storedToken;
 }
 
-const user = 'example_user';
+const user = {};
 const storedToken = sendToken(user);
 const enteredToken = prompt('Enter the token you received:');
 
